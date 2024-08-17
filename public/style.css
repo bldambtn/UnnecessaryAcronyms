@@ -1,17 +1,38 @@
+/* Set the overall styles for the body of the document */
 body {
+  /* Set the background color of the entire page to white */
   background-color: white;
+  
+  /* Define the font for the entire document, using Arial as the primary font 
+     and falling back to a generic sans-serif if Arial is unavailable */
   font-family: Arial, sans-serif;
+  
+  /* Remove the default margin around the body element to ensure no unwanted spacing */
   margin: 0;
+  
+  /* Remove the default padding inside the body element to ensure no unwanted spacing */
   padding: 0;
 }
 
+/* Style the header element */
 header {
+  /* Set the background color of the header to black */
   background-color: black;
+  
+  /* Set the text color within the header to white, ensuring good contrast against the black background */
   color: white;
 }
 
+/* Style anchor (<a>) elements within the nav (navigation) element */
 nav a {
+  /* Remove the underline from links within the navigation to give a cleaner appearance */
   text-decoration: none;
+  
+  /* Set the text color of links within the navigation to white 
+     to maintain contrast against the black background of the header */
   color: white;
+  
+  /* Set the font size of the navigation links to 14 pixels 
+     for readability and a consistent appearance */
   font-size: 14px;
 }
