@@ -1,0 +1,76 @@
+<!-- Main container for the login and signup forms, using Bootstrap classes for layout -->
+<div class="row justify-space-between-md">
+  
+  <!-- Login card section -->
+  <div class="login-card">
+    <!-- Title for the login section -->
+    <h2 class="page-title">Login</h2>
+    
+    <!-- Form for user login -->
+    <form class="form login-form">
+      <!-- Form group for email input -->
+      <div class="form-group">
+        <!-- Label for the email input field -->
+        <label for="email-login">Email:</label>
+        <!-- Input field for entering the email address -->
+        <input class="form-input" type="text" id="email-login" />
+      </div>
+      
+      <!-- Form group for password input -->
+      <div class="form-group">
+        <!-- Label for the password input field -->
+        <label for="password-login">Password:</label>
+        <!-- Input field for entering the password -->
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      
+      <!-- Form group for the login button -->
+      <div class="form-group">
+        <!-- Button to submit the login form -->
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Signup card section -->
+  <div class="login-card">
+    <!-- Title for the signup section -->
+    <h2 class="page-title">Signup</h2>
+    
+    <!-- Form for user signup -->
+    <form class="form signup-form">
+      <!-- Form group for username input -->
+      <div class="form-group">
+        <!-- Label for the username input field -->
+        <label for="username-signup">Username:</label>
+        <!-- Input field for entering the username -->
+        <input class="form-input" type="text" id="username-signup" />
+      </div>
+      
+      <!-- Form group for email input -->
+      <div class="form-group">
+        <!-- Label for the email input field -->
+        <label for="email-signup">Email:</label>
+        <!-- Input field for entering the email address -->
+        <input class="form-input" type="text" id="email-signup" />
+      </div>
+      
+      <!-- Form group for password input -->
+      <div class="form-group">
+        <!-- Label for the password input field -->
+        <label for="password-signup">Password:</label>
+        <!-- Input field for entering the password -->
+        <input class="form-input" type="password" id="password-signup" />
+      </div>
+      
+      <!-- Form group for the signup button -->
+      <div class="form-group">
+        <!-- Button to submit the signup form -->
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Include the JavaScript file that handles login and signup form submissions -->
+<script src="./js/login.js"></script>

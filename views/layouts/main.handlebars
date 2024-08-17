@@ -1,22 +1,42 @@
+<!-- Define the root element of the HTML document and set the language to English -->
 <html lang="en">
   <head>
+    <!-- Specify the character encoding for the document, using UTF-8 to support a wide range of characters -->
     <meta charset="UTF-8" />
+    <!-- Set the title of the web page that appears in the browser tab -->
     <title>The Tech Blog</title>
-    <!-- <link rel="stylesheet" href="/public/jass.css"> -->
+    <!-- Link to another external CSS stylesheet that is currently active -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <!-- Define the header of the page, which typically contains navigation and branding -->
     <header>
+      <!-- Navigation bar with links to different sections of the site -->
       <nav>
+        <!-- Link to the homepage -->
         <a href="/">Homepage</a>
+        <!-- Placeholder link for the dashboard, "#" indicates it currently goes nowhere -->
         <a href="#">Dashboard</a>
-        <a href="#">Login</a>
+        <!-- If the user is logged in, show a logout button -->
+        {{#if loggedIn}}
+          <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+          <!-- Otherwise, show a link to login -->
+          <a href="/login">Login</a>
+        {{/if}}
       </nav>
+      <!-- Main title of the page, usually displayed prominently in the header -->
       <h1>The Tech Blog</h1>
     </header>
+    <!-- Main content area of the page -->
     <main class="container container-fluid mt-5">
+      <!-- Handlebars placeholder for dynamic content to be injected into the page -->
       {{{body}}}
+      <!-- If the user is logged in, load the JS script for when they logout -->
+      {{#if loggedIn}}
+        <script src="/js/logout.js"></script>
+      {{/if}}
     </main>
   </body>
 </html>
