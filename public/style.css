@@ -1,3 +1,4 @@
+/* General reset and body styling */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,7 @@ body {
   padding: 0;
 }
 
+/* Header and Navigation */
 header {
   background-color: black;
   color: white;
@@ -32,196 +34,148 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Heading Styles */
 h2 {
   padding: 5px 0;
 }
 
-h3 {
-  text-align: center; /* Center the text horizontally */
-  padding: 20px 0; /* Add 20px padding above and below */
-  font-size: 24px; /* Increase the font size */
-  margin-top: 20px; /* Add some space above */
-  margin-bottom: 20px; /* Add some space below */
+h3.page-title {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-/* Styling for the login form container */
-#login-form {
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 8px; /* Rounded edges */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px; /* Padding inside the box */
-  margin-bottom: 15px; /* Space below the form */
-  margin-top: 20px; /* Space above the form */
-  width: 100%; /* Full width */
-  max-width: 400px; /* Maximum width */
-  margin: 0 auto; /* Center align */
+/* Form-specific styles */
+#login-form, #signup-form {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-/* Styling for the login button */
-#login-form .new-post-btn {
+#login-form .new-post-btn, #signup-form .new-post-btn {
   display: block;
   width: 100%;
   margin-top: 10px;
 }
 
-/* Link styling for the 'Need to sign up?' link */
-.signup-link {
+.login-link, .signup-link {
   text-decoration: none;
-  color: #007bff; /* Default color */
+  color: #007bff;
   font-size: 14px;
   margin-top: 10px;
   display: block;
-  text-align: center; /* Center align the link */
+  text-align: center;
 }
 
-.signup-link:hover {
-  text-decoration: underline;
-}
-
-/* Styling for the signup form */
-#signup-form {
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 8px; /* Rounded edges */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px; /* Padding inside the box */
-  margin-bottom: 15px; /* Space below the form */
-  margin-top: 20px; /* Space above the form */
-  width: 100%; /* Full width */
-  max-width: 400px; /* Maximum width */
-  margin: 0 auto; /* Center align */
-}
-
-/* Styling for the new-post-btn within the signup form */
-#signup-form .new-post-btn {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* Link styling */
-.login-link {
-  text-decoration: none;
-  color: #007bff; /* Default color */
-  font-size: 14px;
-  margin-top: 10px;
-  display: block;
-  text-align: center; /* Center align the link */
-}
-
-.login-link:hover {
+.login-link:hover, .signup-link:hover {
   text-decoration: underline;
 }
 
 /* Styles for the New Post button */
 .new-post-btn {
-  position: fixed; /* Anchor to the bottom of the page */
-  bottom: 20px; /* Space from the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust centering */
-  background-color: #28a745; /* Green background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding for a button-like appearance */
-  text-align: center; /* Center text */
-  border-radius: 5px; /* Rounded corners */
-  text-decoration: none; /* Remove underline */
-  font-size: 16px; /* Font size */
-  font-weight: bold; /* Bold text */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .new-post-btn.form-button {
-  position: static; /* Remove the fixed position */
-  margin-top: 20px; /* Add some space above the button */
+  position: static;
+  margin-top: 20px;
   left: auto;
   transform: none;
 }
 
 .new-post-btn:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838;
 }
 
-/* Assuming you have a container wrapping the "Your Blog Posts" and form */
+/* Dashboard Container */
 .dashboard-container {
   margin-left: 1in;
   margin-right: 1in;
 }
 
-/* Styling for the new post form */
+/* Blog post form and content styling */
 #new-post-form {
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 8px; /* Rounded edges */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px; /* Padding inside the box */
-  margin-bottom: 15px; /* Space below the form */
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
-/* Container for each blog post */
 .blog-post {
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 8px; /* Rounded edges */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 15px; /* Padding inside the box */
-  margin-bottom: 15px; /* Space between posts */
-  position: relative; /* Positioning for the delete button */
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
 }
 
-/* Styling for the post title */
 .post-title {
-  font-size: 18px; /* Slightly smaller than the dashboard heading */
-  color: black; /* Same color as 'Your Dashboard' heading */
-  margin: 0; /* Remove default margin */
+  font-size: 18px;
+  color: black;
+  margin: 0;
 }
 
-/* Date styling */
 .post-date {
-  font-size: 14px; /* Smaller font for the date */
-  color: gray; /* Gray color for the date */
-  margin-right: 10px; /* Space between the date and title */
+  font-size: 14px;
+  color: gray;
+  margin-right: 10px;
 }
 
-/* Header styling that holds the date and title */
 .post-header {
-  display: flex; /* Align items horizontally */
-  align-items: center; /* Center them vertically */
-  justify-content: space-between; /* Space between date and title */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Hide the delete button */
 .delete-post-btn {
   display: none;
 }
 
-/* Styling for the post content */
 .post-content {
-  margin-top: 10px; /* Space between title/date and content */
+  margin-top: 10px;
 }
 
-/* General styling for all input fields in the form */
+/* General styling for all input fields in specific forms */
 #signup-form input[type="email"],
 #signup-form input[type="text"],
-#signup-form input[type="password"] {
+#signup-form input[type="password"],
+#login-form input[type="text"],
+#login-form input[type="password"],
+#new-post-form input[type="text"],
+#new-post-form textarea {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  box-sizing: border-box;
 }
 
-/* General styling for input fields in forms */
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box; /* Ensure padding doesn't affect the width */
-}
-
+/* Labels */
 label {
   display: block;
   margin-bottom: 0.5rem;
