@@ -24,7 +24,43 @@ const loginFormHandler = async (event) => {
   }
 };
 
-// Add event listener for login form submission
-document
-  .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
+let idleTime = 0;
+const maxIdleTime = 15 * 60 * 1000; // 15 minutes
+
+const resetIdleTimer = () => {
+  idleTime = 0; // Reset the idle time counter
+};
+
+const checkIdleTime = () => {
+  idleTime += 1000; // Increment the idle time counter by 1 second
+
+  if (idleTime >= maxIdleTime) {
+    alert("You have been idle for too long. Logging out...");
+
+    // Make a request to the logout route
+    fetch("/logout")
+      .then(() => {
+        // After logout, redirect to the login page
+        document.location.replace("/login");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  }
+};
+
+// Reset the idle timer on user interaction
+window.onload = resetIdleTimer;
+window.onmousemove = resetIdleTimer;
+window.onkeydown = resetIdleTimer;
+window.ontouchstart = resetIdleTimer; // For mobile touch events
+
+// Check the idle time every second
+setInterval(checkIdleTime, 1000);
+
+// Add event listener for login form submission if the form exists
+const loginForm = document.querySelector(".login-form");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", loginFormHandler);
+}

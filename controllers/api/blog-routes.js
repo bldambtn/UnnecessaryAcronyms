@@ -1,19 +1,11 @@
-// Create a new router instance
 const router = require("express").Router();
-
-// Import the Blog model
 const { Blog } = require("../../models");
-
-// Import authentication middleware
 const authMiddleware = require("../../utils/auth");
 
-// Apply authentication middleware to all routes
-router.use(authMiddleware);
-
 // Route to create a new blog post
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware, async (req, res) => {
   try {
-    // Use data from the request body and associate post with the logged-in user
+    // Create a new blog post with data from the request body and associate it with the logged-in user
     const newBlog = await Blog.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -21,33 +13,59 @@ router.post("/", async (req, res) => {
     // Respond with the created blog post
     res.status(200).json(newBlog);
   } catch (err) {
-    // Respond with error if creation fails
+    // Respond with an error if creation fails
     res.status(400).json(err);
   }
 });
 
-// Route to delete a blog post by ID
-router.delete("/:id", async (req, res) => {
+// Route to update an existing blog post by ID
+router.put("/:id", authMiddleware, async (req, res) => {
   try {
-    // Find post by ID and ensure user owns the post
+    // Update the blog post with the given ID if it belongs to the logged-in user
+    const updatedBlog = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    // If no blog post is found with the given ID, respond with a 404 error
+    if (!updatedBlog[0]) {
+      res.status(404).json({ message: "No blog found with this id!" });
+      return;
+    }
+
+    // Respond with the updated blog post
+    res.status(200).json(updatedBlog);
+  } catch (err) {
+    // Respond with a server error if update fails
+    res.status(500).json(err);
+  }
+});
+
+// Route to delete a blog post by ID
+router.delete("/:id", authMiddleware, async (req, res) => {
+  try {
+    // Delete the blog post with the given ID if it belongs to the logged-in user
     const blogData = await Blog.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
-    // Respond if no post found
+
+    // If no blog post is found with the given ID, respond with a 404 error
     if (!blogData) {
       res.status(404).json({ message: "No blog found with this id!" });
       return;
     }
-    // Respond with success message
+
+    // Respond with a success message
     res.status(200).json({ message: "Blog deleted successfully" });
   } catch (err) {
-    // Respond with error if deletion fails
+    // Respond with a server error if deletion fails
     res.status(500).json(err);
   }
 });
 
-// Export the router
 module.exports = router;

@@ -68,18 +68,18 @@ router.post("/login", async (req, res) => {
 
 // Logout
 router.get("/logout", (req, res) => {
-  // Check if the user is logged in
   if (req.session.loggedIn) {
     req.session.destroy((err) => {
       if (err) {
-        return res.status(500).json({ error: "Failed to log out." }); // Handle potential errors during session destruction
+        return res.status(500).json({ error: "Failed to log out." });
       }
-      res.redirect("/"); // Redirect to homepage on successful logout
+      res.redirect("/login"); // Redirect to the login page on successful logout
     });
   } else {
-    res.status(404).json({ error: "User not logged in." }); // Respond with not found if not logged in
+    res.status(404).json({ error: "User not logged in." });
   }
 });
+
 
 // Export the router
 module.exports = router;
