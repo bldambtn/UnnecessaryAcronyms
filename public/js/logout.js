@@ -1,4 +1,15 @@
-// Handle user logout
+// Get the logout button element
+const logoutButton = document.querySelector("#logout");
+
+// Check if the logout button exists before adding the event listener
+if (logoutButton) {
+  logoutButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    logout();
+  });
+}
+
+// Function to handle the logout process
 const logout = async () => {
   const response = await fetch("/api/users/logout", {
     method: "POST",
@@ -11,9 +22,3 @@ const logout = async () => {
     alert("Failed to log out."); // Alert on failure
   }
 };
-
-// Add event listener for logout link
-document.querySelector("#logout").addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent the default anchor behavior
-  logout(); // Call the logout function
-});
