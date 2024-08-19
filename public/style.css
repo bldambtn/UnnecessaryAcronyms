@@ -1,38 +1,71 @@
-/* Set the overall styles for the body of the document */
-body {
-  /* Set the background color of the entire page to white */
-  background-color: white;
-  
-  /* Define the font for the entire document, using Arial as the primary font 
-     and falling back to a generic sans-serif if Arial is unavailable */
-  font-family: Arial, sans-serif;
-  
-  /* Remove the default margin around the body element to ensure no unwanted spacing */
+* {
   margin: 0;
-  
-  /* Remove the default padding inside the body element to ensure no unwanted spacing */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
   padding: 0;
 }
 
-/* Style the header element */
 header {
-  /* Set the background color of the header to black */
   background-color: black;
-  
-  /* Set the text color within the header to white, ensuring good contrast against the black background */
   color: white;
 }
 
-/* Style anchor (<a>) elements within the nav (navigation) element */
 nav a {
-  /* Remove the underline from links within the navigation to give a cleaner appearance */
   text-decoration: none;
-  
-  /* Set the text color of links within the navigation to white 
-     to maintain contrast against the black background of the header */
   color: white;
-  
-  /* Set the font size of the navigation links to 14 pixels 
-     for readability and a consistent appearance */
   font-size: 14px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Styles for the New Post button */
+.new-post-btn {
+  position: fixed; /* Anchor to the bottom of the page */
+  bottom: 20px; /* Space from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust centering */
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for a button-like appearance */
+  text-align: center; /* Center text */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.new-post-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
 }

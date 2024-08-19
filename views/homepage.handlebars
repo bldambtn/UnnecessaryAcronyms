@@ -1,0 +1,19 @@
+<div class="blog-container">
+  <div class="card-header col-md-10">
+    <h2>
+      Recent Posts
+    </h2>
+  </div>
+
+  <!-- Container for the list of recent posts -->
+  <div>
+    <section class="flex-row justify-center">
+    {{#each blogs}}
+      <div class="blog-post">
+        <h2>{{this.title}}</h2>
+        <p>{{this.content}}</p>
+        <p>Posted by: {{this.user.username}}</p>
+      </div>
+    {{/each}}
+  </section>
+</div>
