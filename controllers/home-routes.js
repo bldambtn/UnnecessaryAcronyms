@@ -94,16 +94,24 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
-// Route to render the login page
-router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect to the homepage
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
-  // Render the login template
+  res.render("signup");
+});
+
+
+// Route to render the login page
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("login");
 });
+
 
 router.get("/logout", (req, res) => {
   if (req.session.loggedIn) {
