@@ -6,14 +6,18 @@
   </div>
 
   <!-- Container for the list of recent posts -->
-  <div>
-    <section class="flex-row justify-center">
-    {{#each blogs}}
-      <div class="blog-post">
-        <h2>{{this.title}}</h2>
-        <p>{{this.content}}</p>
-        <p>Posted by: {{this.user.username}}</p>
+  <div class="blog-post-container">
+  {{#each blogs}}
+    <div class="blog-post">
+      <div class="post-header">
+        <h3 class="post-title">
+          <a href="/blog/{{this.id}}">{{this.title}}</a>
+        </h3>
+        <span class="post-meta">Posted by {{this.user.username}} on {{format_date this.createdAt}}</span>
       </div>
-    {{/each}}
-  </section>
+      <div class="post-content">
+        <p>{{this.content}}</p>
+      </div>
+    </div>
+  {{/each}}
 </div>

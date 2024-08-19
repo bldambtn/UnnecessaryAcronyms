@@ -4,6 +4,61 @@ const router = require("express").Router();
 // Import the Blog and User models
 const { Blog, User } = require("../models");
 
+// Route to get all blog posts and render the homepage
+router.get("/", async (req, res) => {
+  try {
+    // Retrieve all blog posts, including the username of the post creator
+    const dbBlogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+
+    // Serialize the data to make it easier to pass to the template
+    const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
+
+    // Render the homepage template, passing in the blogs and login status
+    res.render("homepage", {
+      blogs,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err); // Log any errors
+    res.status(500).json(err); // Respond with a server error
+  }
+});
+
+// Route to get all blog posts and render the homepage
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+
+    if (!blogData) {
+      res.status(404).json({ message: "No blog found with this id!" });
+      return;
+    }
+
+    const blog = blogData.get({ plain: true });
+
+    res.render("blog", {
+      blog,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Route to render the dashboard
 router.get("/dashboard", async (req, res) => {
   try {
@@ -32,33 +87,6 @@ router.get("/dashboard", async (req, res) => {
     res.render("dashboard", {
       blogs,
       loggedIn: req.session.loggedIn, // Pass the loggedIn status to the template
-    });
-  } catch (err) {
-    console.log(err); // Log any errors
-    res.status(500).json(err); // Respond with a server error
-  }
-});
-
-// Route to get all blog posts and render the homepage
-router.get("/", async (req, res) => {
-  try {
-    // Retrieve all blog posts, including the username of the post creator
-    const dbBlogData = await Blog.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
-    });
-
-    // Serialize the data to make it easier to pass to the template
-    const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
-
-    // Render the homepage template, passing in the blogs and login status
-    res.render("homepage", {
-      blogs,
-      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err); // Log any errors
