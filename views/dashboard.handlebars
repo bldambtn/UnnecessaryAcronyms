@@ -2,6 +2,16 @@
 <div class="dashboard-container">
   <a href="/create-post" class="new-post-btn">New Post</a>
 
+  <form id="new-post-form" style="display: none;">
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" name="title" required />
+
+    <label for="post-content">Content:</label>
+    <textarea id="post-content" name="content" required></textarea>
+
+    <button type="submit" class="new-post-btn form-button">Create</button>
+  </form>
+
   <div class="blog-post-container">
     {{#each blogs}}
       <div class="blog-post">
