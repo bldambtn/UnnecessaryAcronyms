@@ -132,22 +132,88 @@ h3.page-title {
   position: relative;
 }
 
-.post-title {
-  font-size: 18px;
-  color: black;
-  margin: 0;
+/* Styling for the blog post container */
+.blog-post {
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 8px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 15px; /* Padding inside the box */
+  margin-bottom: 15px; /* Space between posts */
 }
 
-.post-date {
-  font-size: 14px;
-  color: gray;
-  margin-right: 10px;
-}
-
+/* Styling for the post header (title, author, date) */
 .post-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 10px; /* Space between header and content */
+}
+
+/* Styling for the post title */
+.post-title {
+  font-size: 24px;
+  color: black;
+  margin-bottom: 5px; /* Space between title and meta */
+}
+
+/* Styling for the post meta (author, date) */
+.post-meta {
+  font-size: 14px;
+  color: gray;
+}
+
+/* Styling for the post content */
+.post-content {
+  margin-top: 15px;
+  font-size: 16px;
+  color: black;
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Styling for the comment form container */
+.comment-form {
+  background-color: #f0f0f0; /* Light gray background similar to the blog post form */
+  border-radius: 8px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 15px; /* Padding inside the box */
+  margin-bottom: 15px; /* Space below the form */
+  margin-top: 20px; /* Space above the form */
+  width: 100%; /* Full width */
+  max-width: 600px; /* Maximum width for the form */
+  margin: 0 auto; /* Center align */
+}
+
+/* Styling for the textarea in the comment form */
+.comment-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Styling for the submit button in the comment form */
+.comment-form .form-button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for a button-like appearance */
+  text-align: center; /* Center text */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.comment-form .form-button:hover {
+  background-color: #218838; /* Darker green on hover */
 }
 
 .delete-post-btn {
