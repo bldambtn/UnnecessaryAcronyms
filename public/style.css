@@ -14,12 +14,18 @@ body {
 header {
   background-color: black;
   color: white;
+  padding: 10px;
+}
+
+nav {
+  padding: 5px 0;
 }
 
 nav a {
   text-decoration: none;
   color: white;
   font-size: 14px;
+  margin: 0 5px;
 }
 
 nav a:hover {
@@ -48,12 +54,71 @@ p {
   transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
+.new-post-btn.form-button {
+  position: static; /* Remove the fixed position */
+  margin-top: 20px; /* Add some space above the button */
+  left: auto;
+  transform: none;
+}
+
 .new-post-btn:hover {
   background-color: #218838; /* Darker green on hover */
 }
 
-form {
-  margin-bottom: 2rem;
+/* Assuming you have a container wrapping the "Your Blog Posts" and form */
+.dashboard-container {
+  margin-left: 1in;
+  margin-right: 1in;
+}
+
+/* Styling for the new post form */
+#new-post-form {
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 8px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 15px; /* Padding inside the box */
+  margin-bottom: 15px; /* Space below the form */
+}
+
+/* Container for each blog post */
+.blog-post {
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 8px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 15px; /* Padding inside the box */
+  margin-bottom: 15px; /* Space between posts */
+  position: relative; /* Positioning for the delete button */
+}
+
+/* Styling for the post title */
+.post-title {
+  font-size: 18px; /* Slightly smaller than the dashboard heading */
+  color: black; /* Same color as 'Your Dashboard' heading */
+  margin: 0; /* Remove default margin */
+}
+
+/* Date styling */
+.post-date {
+  font-size: 14px; /* Smaller font for the date */
+  color: gray; /* Gray color for the date */
+  margin-right: 10px; /* Space between the date and title */
+}
+
+/* Header styling that holds the date and title */
+.post-header {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center them vertically */
+  justify-content: space-between; /* Space between date and title */
+}
+
+/* Hide the delete button */
+.delete-post-btn {
+  display: none;
+}
+
+/* Styling for the post content */
+.post-content {
+  margin-top: 10px; /* Space between title/date and content */
 }
 
 input[type="text"],
