@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route to get all blog posts and render the homepage
+// Route to get blog posts by id and render the homepage
 router.get("/blog/:id", async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -62,15 +62,17 @@ router.get("/blog/:id", async (req, res) => {
 // Route to render the dashboard
 router.get("/dashboard", async (req, res) => {
   try {
-    // Ensure the user is logged in
     if (!req.session.loggedIn) {
-      return res.redirect("/login"); // Redirect to login if not logged in
+      return res.redirect("/login");
     }
 
-    // Fetch the user's blog posts
+    if (!req.session.user_id) {
+      throw new Error("User ID is not defined in the session.");
+    }
+
     const dbBlogData = await Blog.findAll({
       where: {
-        user_id: req.session.user_id, // Only fetch posts by the logged-in user
+        user_id: req.session.user_id,
       },
       include: [
         {
@@ -80,17 +82,15 @@ router.get("/dashboard", async (req, res) => {
       ],
     });
 
-    // Serialize the data to make it easier to pass to the template
     const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
 
-    // Render the dashboard template, passing in the blogs and login status
     res.render("dashboard", {
       blogs,
-      loggedIn: req.session.loggedIn, // Pass the loggedIn status to the template
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err); // Log any errors
-    res.status(500).json(err); // Respond with a server error
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 

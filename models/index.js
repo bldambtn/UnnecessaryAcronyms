@@ -1,19 +1,29 @@
-// Import the User model
+// models/index.js
 const User = require("./User");
-
-// Import the Blog model
 const Blog = require("./Blog");
+const Comment = require("./Comment");
 
-// Define the relationship where a User can have many Blog posts
+// Set up model associations
 User.hasMany(Blog, {
-  foreignKey: "user_id", // Foreign key in the Blog model that references the User
-  onDelete: "CASCADE", // Delete all associated blogs if the user is deleted
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
 
-// Define the relationship where a Blog belongs to a User
 Blog.belongsTo(User, {
-  foreignKey: "user_id", // Foreign key in the Blog model that references the User
+  foreignKey: "user_id",
 });
 
-// Export the User and Blog models for use in other parts of the application
-module.exports = { User, Blog };
+Blog.hasMany(Comment, {
+  foreignKey: "blog_id",
+  onDelete: "CASCADE",
+});
+
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+Comment.belongsTo(Blog, {
+  foreignKey: "blog_id",
+});
+
+module.exports = { User, Blog, Comment };

@@ -7,23 +7,26 @@ const { User } = require("../../models");
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
-    // Create a new user with the data from the request body
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
-    // Save session and set loggedIn to true
+    console.log("New User Created:", dbUserData);
+
+    // Save session and set user_id
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
-      // Respond with the newly created user data
+      console.log("Session after saving user:", req.session);
+
       res.status(200).json(dbUserData);
     });
   } catch (err) {
-    console.log(err); // Log any errors
-    res.status(500).json(err); // Respond with a server error
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -37,18 +40,14 @@ router.post("/login", async (req, res) => {
     });
 
     if (!dbUserData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect username or password. Please try again!" });
+      res.status(400).json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect username or password. Please try again!" });
+      res.status(400).json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
 
@@ -56,9 +55,9 @@ router.post("/login", async (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+      console.log("Session after login:", req.session);
+
+      res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
