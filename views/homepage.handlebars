@@ -1,23 +1,18 @@
 <div class="blog-container">
-  <div class="card-header col-md-10">
-    <h2>
-      Recent Posts
-    </h2>
-  </div>
+  <h2>Recent Posts</h2>
 
-  <!-- Container for the list of recent posts -->
   <div class="blog-post-container">
-  {{#each blogs}}
-    <div class="blog-post">
-      <div class="post-header">
-        <h3 class="post-title">
-          <a href="/blog/{{this.id}}">{{this.title}}</a>
-        </h3>
-        <span class="post-meta">Posted by {{this.user.username}} on {{format_date this.createdAt}}</span>
+    {{#each blogs}}
+      <div class="blog-post">
+        <div class="post-header">
+          <h3 class="post-title">
+            <a href="/blog/{{this.id}}">{{this.title}}</a>
+          </h3>
+          <span class="post-meta">Posted by {{this.user.username}} on {{format_date this.createdAt}}</span>
+        </div>
+        <!-- No post content here -->
       </div>
-      <div class="post-content">
-        <p>{{this.content}}</p>
-      </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>
+
