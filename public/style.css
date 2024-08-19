@@ -212,6 +212,26 @@ h3.page-title {
   transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
+/* General button styling */
+.form-button {
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for a button-like appearance */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline for links */
+  display: inline-block; /* Inline-block element */
+  margin-top: 10px; /* Margin on top for spacing */
+}
+
+.form-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
 .comment-form .form-button:hover {
   background-color: #218838; /* Darker green on hover */
 }
