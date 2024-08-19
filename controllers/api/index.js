@@ -1,17 +1,11 @@
-// Create a new router instance
+// controllers/api/index.js
 const router = require("express").Router();
-
-// Import user-related routes
 const userRoutes = require("./user-routes");
-
-// Import blog-related routes
 const blogRoutes = require("./blog-routes");
+const commentRoutes = require("./comment-routes");
 
-// Use the user routes for the "/users" path
 router.use("/users", userRoutes);
-
-// Use the blog routes for the "/blogs" path
 router.use("/blogs", blogRoutes);
+router.use("/comments", commentRoutes);
 
-// Export the router
 module.exports = router;

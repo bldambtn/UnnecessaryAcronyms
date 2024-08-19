@@ -43,6 +43,34 @@ router.put("/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// controllers/api/blog-routes.js
+router.get("/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+
+    res.render("blog", {
+      blog,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 // Route to delete a blog post by ID
 router.delete("/:id", authMiddleware, async (req, res) => {
   try {
