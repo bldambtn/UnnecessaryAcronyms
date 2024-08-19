@@ -1,48 +1,43 @@
-// Import the Express library's Router object to create modular, mountable route handlers.
+// Create a new router instance
 const router = require("express").Router();
-// Import the User model from the models directory. This will be used to interact with the user data in the database.
+
+// Import the User model
 const { User } = require("../../models");
 
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
-    // Create a new user in the database using the data provided in the request body.
-    // The `User.create` method will insert a new record into the users table with the
-    // username, email, and password provided in the request.
+    // Create a new user with the data from the request body
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
-    // After successfully creating the user, set up a session and save it.
-    // The session variable `loggedIn` is set to `true` to indicate that the user is logged in.
+    // Save session and set loggedIn to true
     req.session.save(() => {
       req.session.loggedIn = true;
 
-      // Respond with the newly created user data in JSON format and a 200 status code.
+      // Respond with the newly created user data
       res.status(200).json(dbUserData);
     });
   } catch (err) {
-    // If an error occurs during the user creation process, log the error to the console
-    // and send a 500 status code with the error details as a JSON response.
-    console.log(err);
-    res.status(500).json(err);
+    console.log(err); // Log any errors
+    res.status(500).json(err); // Respond with a server error
   }
 });
 
-// Login route
+// Login
 router.post("/login", async (req, res) => {
   try {
-    // Attempt to find a user in the database that matches the provided email address.
-    // The `findOne` method searches for a single record where the email matches the request body.
+    // Find user by email
     const dbUserData = await User.findOne({
       where: {
         email: req.body.email,
       },
     });
 
-    // If no user is found with the provided email, respond with a 400 status code and an error message.
+    // If no user is found, respond with an error
     if (!dbUserData) {
       res
         .status(400)
@@ -50,11 +45,10 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    // Check if the provided password matches the stored password using the `checkPassword` method.
-    // This method should be defined in the User model to compare the hashed password.
+    // Check if the password is correct
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
-    // If the password is incorrect, respond with a 400 status code and an error message.
+    // If password is incorrect, respond with an error
     if (!validPassword) {
       res
         .status(400)
@@ -62,42 +56,36 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    // If the user credentials are valid, set up a session and save it.
-    // The session variable `loggedIn` is set to `true` to indicate that the user is logged in.
+    // Save session and set loggedIn to true and user_id
     req.session.save(() => {
+      req.session.user_id = dbUserData.id; // Save the user ID to the session
       req.session.loggedIn = true;
 
-      // Respond with the user data and a success message in JSON format and a 200 status code.
+      // Respond with success message and user data
       res
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (err) {
-    // If an error occurs during the login process, log the error to the console
-    // and send a 500 status code with the error details as a JSON response.
-    console.log(err);
-    res.status(500).json(err);
+    console.log(err); // Log any errors
+    res.status(500).json(err); // Respond with a server error
   }
 });
 
-// Logout route
-router.post("/logout", (req, res) => {
-  // If the user is logged in (i.e., the session variable `loggedIn` is `true`),
-  // destroy the session to log the user out.
+// Logout
+router.get("/logout", (req, res) => {
+  // Check if the user is logged in
   if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      // Respond with a 204 status code indicating that the logout was successful,
-      // but no content is returned.
-      res.status(204).end();
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ error: "Failed to log out." }); // Handle potential errors during session destruction
+      }
+      res.redirect("/"); // Redirect to homepage on successful logout
     });
   } else {
-    // If the user is not logged in, respond with a 404 status code indicating that the
-    // requested resource (logout) was not found or is not applicable.
-    res.status(404).end();
+    res.status(404).json({ error: "User not logged in." }); // Respond with not found if not logged in
   }
 });
 
-// Export the router object so that it can be used in other parts of the application.
-// Typically, this router would be imported in the main application file (e.g., `app.js`)
-// to add the user-related routes to the overall application routing system.
+// Export the router
 module.exports = router;
