@@ -56,6 +56,19 @@ h3.page-title {
   max-width: 600px;
 }
 
+.login-link, .signup-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+.login-link:hover, .signup-link:hover {
+  text-decoration: underline;
+}
+
 .form-button {
   background-color: #28a745;
   color: white;
