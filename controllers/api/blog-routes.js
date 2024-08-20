@@ -26,7 +26,7 @@ router.get("/:id", authMiddleware, async (req, res) => {
         },
         {
           model: Comment,
-          include: [User], // Include the user who made the comment
+          include: [User], // Ensure comments are included with associated user
         },
       ],
     });
