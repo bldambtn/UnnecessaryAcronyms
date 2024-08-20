@@ -27,11 +27,12 @@
   </ul>
 
   {{#if loggedIn}}
-  <!-- Updated comment form -->
-  <form id="comment-form" class="comment-form">
-    <label for="comment-text">Add a comment:</label>
-    <textarea id="comment-text" name="comment_text" required></textarea>
-    <button type="submit" class="new-post-btn form-button">Add Comment</button>
-  </form>
-  {{/if}}
+<form id="comment-form" class="comment-form">
+  <label for="comment-text">Add a comment:</label>
+  <textarea id="comment-text" name="comment_text" required></textarea>
+  <button type="submit" class="new-post-btn form-button">Add Comment</button>
+</form>
+{{/if}}
 </section>
+
+<script src="/js/comment.js"></script>

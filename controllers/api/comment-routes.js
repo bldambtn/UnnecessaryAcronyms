@@ -1,4 +1,3 @@
-// controllers/api/comment-routes.js
 const router = require("express").Router();
 const { Comment } = require("../../models");
 const authMiddleware = require("../../utils/auth");
