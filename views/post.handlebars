@@ -1,18 +1,13 @@
-<html>
-  <head>
-    <!-- Blog post title -->
-  </head>
-  <title>{{blog.title}}</title>
-  <body>
-    <!-- Blog post title header -->
-    <h1>{{blog.title}}</h1>
-    <!-- Blog post content -->
-    <p>{{blog.content}}</p>
-    <!-- Author and post date -->
-    <small>By {{blog.User.username}} on {{blog.createdAt}}</small>
-    <!-- JavaScript for post handling -->
-    {{!-- <script src="/js/post.js"></script> --}}
-    <script src="/js/login.js"></script>
+<title>{{blog.title}}</title>
+<section>
+  <!-- Blog post title header -->
+  <h1>{{blog.title}}</h1>
+  <!-- Blog post content -->
+  <p>{{blog.content}}</p>
+  <!-- Author and post date -->
+  <small>By {{blog.User.username}} on {{blog.createdAt}}</small>
+  <!-- JavaScript for post handling -->
+  {{! <script src="/js/post.js"></script> }}
+  <script src="/js/login.js"></script>
 
-  </body>
-</html>
+</section>

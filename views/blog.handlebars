@@ -3,7 +3,7 @@
     <div class="post-header">
       <h1 class="post-title">{{blog.title}}</h1>
       <p class="post-meta">
-        By {{blog.author}} | Posted on {{format_date blog.createdAt}}
+        Posted by {{blog.user.username}} on {{format_date blog.createdAt}}
       </p>
     </div>
 
@@ -18,20 +18,21 @@
   <!-- Comment section -->
   <h3>Comments</h3>
   <ul id="comment-list">
-    {{#each blog.comments}}
-      <li>
-        <strong>{{this.user.username}}</strong> on {{format_date this.createdAt}}:
-        <p>{{this.comment_text}}</p>
-      </li>
-    {{/each}}
-  </ul>
+  {{#each blog.comments}}
+    <li>
+      <strong>{{this.user.username}}</strong> on {{format_date this.createdAt}}:
+      <p>{{this.comment_text}}</p>
+    </li>
+  {{/each}}
+</ul>
 
   {{#if loggedIn}}
-  <!-- Updated comment form -->
-  <form id="comment-form" class="comment-form">
-    <label for="comment-text">Add a comment:</label>
-    <textarea id="comment-text" name="comment_text" required></textarea>
-    <button type="submit" class="new-post-btn form-button">Add Comment</button>
-  </form>
-  {{/if}}
+<form id="comment-form" class="comment-form">
+  <label for="comment-text">Add a comment:</label>
+  <textarea id="comment-text" name="comment_text" required></textarea>
+  <button type="submit" class="new-post-btn form-button">Add Comment</button>
+</form>
+{{/if}}
 </section>
+
+<script src="/js/comment.js"></script>
