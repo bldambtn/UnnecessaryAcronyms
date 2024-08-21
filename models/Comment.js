@@ -1,8 +1,11 @@
+// Import necessary modules from Sequelize and the database connection
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+// Define the Comment model by extending Sequelize's Model class
 class Comment extends Model {}
 
+// Initialize the Comment model with its fields and configuration
 Comment.init(
   {
     id: {
@@ -17,14 +20,14 @@ Comment.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user", // Make sure this matches the User table name
+        model: "user",
         key: "id",
       },
     },
     blog_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "blog", // This must match the Blog table name
+        model: "blog",
         key: "id",
       },
     },
@@ -38,4 +41,5 @@ Comment.init(
   }
 );
 
+// Export the Comment model for use in other parts of the application
 module.exports = Comment;

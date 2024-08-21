@@ -1,27 +1,18 @@
-// Core Node.js module for file paths
+// Import necessary modules
 const path = require("path");
-
-// Express framework
 const express = require("express");
-
-// Session middleware
 const session = require("express-session");
-
-// Handlebars template engine
 const exphbs = require("express-handlebars");
-
-// Sequelize session store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-// Import routes
+// Import routes and models
 const routes = require("./controllers");
-
-// Database connection
 const sequelize = require("./config/connection");
 
 // Custom Handlebars helpers
 const helpers = require("./utils/helpers");
 
+// Create Express app instance and set up port number and secret key for session storage.
 const app = express();
 const PORT = process.env.PORT || 3001; // Set port
 

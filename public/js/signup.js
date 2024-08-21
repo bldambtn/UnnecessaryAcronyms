@@ -16,9 +16,11 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/"); // Redirect on success
+      // Redirect on success
+      document.location.replace("/");
     } else {
-      alert("Failed to sign up."); // Alert on failure
+      // Alert on failure
+      alert("Failed to sign up.");
     }
   }
 };

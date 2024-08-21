@@ -43,14 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const postId = event.target.getAttribute("data-id");
 
-      console.log("Fetching post with ID:", postId); // Debug statement
-
       // Fetch the post data to populate the form
       try {
         const response = await fetch(`/api/blogs/${postId}`);
         if (response.ok) {
           const data = await response.json();
-          console.log("Post data fetched successfully:", data); // Debug statement
 
           // Populate the form with the post data
           document.querySelector("#edit-post-title").value = data.title;
@@ -102,11 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           };
         } else {
-          console.error("Failed to fetch post data. Response not OK."); // Debug statement
+          console.error("Failed to fetch post data. Response not OK.");
           alert("Failed to fetch post data.");
         }
       } catch (error) {
-        console.error("Error fetching post data:", error); // Debug statement
+        console.error("Error fetching post data:", error);
         alert("An error occurred while fetching post data.");
       }
     });

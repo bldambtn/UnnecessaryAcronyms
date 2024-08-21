@@ -72,7 +72,8 @@ router.get("/logout", (req, res) => {
       if (err) {
         return res.status(500).json({ error: "Failed to log out." });
       }
-      res.redirect("/login"); // Redirect to the login page on successful logout
+      // Redirect to the login page on successful logout
+      res.redirect("/login");
     });
   } else {
     res.status(404).json({ error: "User not logged in." });

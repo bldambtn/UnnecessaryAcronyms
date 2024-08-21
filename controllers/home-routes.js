@@ -17,7 +17,6 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    // Serialize the data to make it easier to pass to the template
     const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
 
     // Render the homepage template, passing in the blogs and login status
@@ -26,8 +25,8 @@ router.get("/", async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err); // Log any errors
-    res.status(500).json(err); // Respond with a server error
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -112,14 +111,15 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
+// Route to render the logout page
 router.get("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({ error: "Failed to log out." });
       }
-      res.redirect("/"); // Redirect to homepage
+      // Redirect to homepage
+      res.redirect("/");
     });
   } else {
     res.status(404).json({ error: "User not logged in." });

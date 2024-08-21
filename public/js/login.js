@@ -15,24 +15,30 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard"); // Redirect on success
+      // Redirect on success
+      document.location.replace("/dashboard");
     } else {
-      alert("Failed to log in."); // Alert on failure
+      // Alert on failure
+      alert("Failed to log in.");
     }
   } else {
-    alert("Please enter both username and password."); // Alert if missing
+    // Alert if missing
+    alert("Please enter both username and password.");
   }
 };
 
 let idleTime = 0;
-const maxIdleTime = 15 * 60 * 1000; // 15 minutes
+// 15 minutes
+const maxIdleTime = 15 * 60 * 1000; 
 
 const resetIdleTimer = () => {
-  idleTime = 0; // Reset the idle time counter
+  // Reset the idle time counter
+  idleTime = 0;
 };
 
 const checkIdleTime = () => {
-  idleTime += 1000; // Increment the idle time counter by 1 second
+  // Increment the idle time counter by 1 second
+  idleTime += 1000;
 
   if (idleTime >= maxIdleTime) {
     alert("You have been idle for too long. Logging out...");
@@ -53,7 +59,7 @@ const checkIdleTime = () => {
 window.onload = resetIdleTimer;
 window.onmousemove = resetIdleTimer;
 window.onkeydown = resetIdleTimer;
-window.ontouchstart = resetIdleTimer; // For mobile touch events
+window.ontouchstart = resetIdleTimer;
 
 // Check the idle time every second
 setInterval(checkIdleTime, 1000);

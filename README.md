@@ -1,7 +1,7 @@
 # UnnecessaryAcronyms
 
-## Descrption
-A CMS-style (Content Management System) blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
+## Description
+A CMS-style (Content Management System) blog site designed for developers who want to share their thoughts, articles, and opinions on technical topics. This platform, built from scratch and deployed on Render, follows the Model-View-Controller (MVC) architectural paradigm. Using Handlebars.js for templating, Sequelize as the ORM, and express-session for authentication, the site allows users to publish blog posts, comment on others' posts, and manage their content through a user-friendly dashboard. Whether you're signing up for the first time, logging in to manage your posts, or exploring the latest articles, this site provides a seamless experience for developers to engage with the tech community.
 
 ## Original User Story and Acceptace Criteria
 
@@ -53,21 +53,57 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Mock-Up
 
-## Credits
+*   Deployed application: https://unnecessaryacronyms.onrender.com/
 
-*   bcrypt. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/bcrypt
+*   Application repository: https://github.com/bldambtn/UnnecessaryAcronyms
 
-*   connect-session-sequelize. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/connect-session-sequelize
+![View of the login page](./public/assets/01%20login%20view.png)
 
-*   dotenv. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/dotenv
+![View of Signup page](./public/assets/02%20signup%20view.png)
 
-*   express-handlebars. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/express-handlebars
+![View of post creation form](./public/assets/03%20Create%20Post.png)
 
-*   express-session. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/express-session
+![View of dashboard when user logged in](./public/assets/04%20Dashboard.png)
 
-*   pg. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/pg
+![View of homepage with posts](./public/assets/05%20Homepage.png)
 
-*   sequelize. (n.d.). npm. Retrieved August 10, 2024, from https://www.npmjs.com/package/sequelize
+![View of individual blog post with comments form](./public/assets/06%20Blog%20View.png)
+
+## Credits, Citations, and Collaborations
+
+*   bcrypt. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/bcrypt
+
+*   connect-session-sequelize. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/connect-session-sequelize
+
+*   dotenv. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/dotenv
+
+*   Element: keydown event. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
+
+*   Element: keypress event. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
+
+*   Element: mousemove event. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event
+
+*   Element: touchstart event. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event
+
+*   Express-handlebars. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/express-handlebars
+
+*   Handlebars.js: Introduction. (n.d.). Handlebars.js. Retrieved August 18, 2024, from https://handlebarsjs.com/guide/
+
+*   McQuade, J. (n.d.). Collaborator on MVC, routes, controllers, when to create an API, how to reference an API route. GitHub. Retrieved August 14th through August 20th, 2024, from https://github.com/JacqMcQ
+
+*   MVC. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Glossary/MVC
+
+*   pg. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/pg
+
+*   Render. (n.d.). Databases. Retrieved August 20, 2024, from https://docs.render.com/databases
+
+*   Render. (n.d.). Adding multiple databases to a single instance. Retrieved August 20, 2024, from https://docs.render.com/databases#adding-multiple-databases-to-a-single-instance
+
+*   sequelize. (n.d.). npm. Retrieved August 14, 2024, from https://www.npmjs.com/package/sequelize
+
+*   UTA-VIRT-FSF-PT-05-2024-U-LOLC. (2024). GitHub. Retrieved August 18, 2024, from https://git.bootcampcontent.com/University-of-Texas-at-Austin/UTA-VIRT-FSF-PT-05-2024-U-LOLC/-/tree/main/14-MVC/01-Activities?ref_type=heads
+
+*   Window: load event. (n.d.). MDN Web Docs. Retrieved August 18, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
 
 ## License
 MIT License
