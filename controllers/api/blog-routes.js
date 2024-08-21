@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Blog, User, Comment } = require("../../models"); // Import User and Comment models
+const { Blog, User, Comment } = require("../../models");
 const authMiddleware = require("../../utils/auth");
 
 // Route to create a new blog post
@@ -25,8 +25,9 @@ router.get("/:id", authMiddleware, async (req, res) => {
           attributes: ["username"],
         },
         {
+          // Ensure comments are included with associated user
           model: Comment,
-          include: [User], // Ensure comments are included with associated user
+          include: [User],
         },
       ],
     });

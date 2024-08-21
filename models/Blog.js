@@ -1,8 +1,11 @@
+// Import necessary modules from Sequelize and the database connection
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+// Define the Blog model by extending Sequelize's Model class
 class Blog extends Model {}
 
+// Initialize the Blog model with its fields and configuration
 Blog.init(
   {
     id: {
@@ -21,7 +24,7 @@ Blog.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user", // Make sure this matches the User table name
+        model: "user",
         key: "id",
       },
     },
@@ -34,4 +37,5 @@ Blog.init(
   }
 );
 
+// Export the Blog model for use in other parts of the application
 module.exports = Blog;

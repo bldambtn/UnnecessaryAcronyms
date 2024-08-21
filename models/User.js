@@ -9,7 +9,6 @@ const sequelize = require("../config/connection");
 
 // Define the User model as an extension of Sequelize's Model class
 class User extends Model {
-  // Method to check if the entered password matches the hashed password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
@@ -18,19 +17,16 @@ class User extends Model {
 // Initialize the User model with its schema and configuration
 User.init(
   {
-    // Define the 'id' field as an integer that auto-increments and serves as the primary key
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    // Define the 'username' field as a string that cannot be null
     username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Define the 'email' field as a string that cannot be null and must be unique
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,7 +35,6 @@ User.init(
         isEmail: true,
       },
     },
-    // Define the 'password' field as a string that cannot be null and must be at least 6 characters long
     password: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -17,8 +17,10 @@ const logout = async () => {
   });
 
   if (response.ok) {
-    document.location.replace("/"); // Redirect to the homepage on success
+    // Redirect to the homepage on success
+    document.location.replace("/");
   } else {
-    alert("Failed to log out."); // Alert on failure
+    // Alert on failure
+    alert("Failed to log out.");
   }
 };

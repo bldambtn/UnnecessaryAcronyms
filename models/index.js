@@ -1,3 +1,4 @@
+// Import models
 const User = require("./User");
 const Blog = require("./Blog");
 const Comment = require("./Comment");
@@ -25,4 +26,5 @@ Comment.belongsTo(Blog, {
   foreignKey: "blog_id",
 });
 
+// Export the models with their associations
 module.exports = { User, Blog, Comment };

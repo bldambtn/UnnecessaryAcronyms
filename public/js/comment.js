@@ -1,7 +1,8 @@
 document
   .querySelector("#comment-form")
   .addEventListener("submit", async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    // Prevent default form submission
+    event.preventDefault();
 
     const comment_text = document.querySelector("#comment-text").value.trim();
     const blog_id = window.location.pathname.split("/").pop();
@@ -15,11 +16,9 @@ document
         },
       });
 
-      console.log(response.statusText); // Log the response status
-
       if (response.ok) {
-        document.location.reload(); // Reload the page to display the new comment
-        console.log("Comment added successfully!");
+        // Reload the page to display the new comment
+        document.location.reload();
       } else {
         alert("Failed to add comment.");
       }
